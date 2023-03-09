@@ -48,8 +48,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String _text = "Ganjil";
+  int _counter = 1;
+  String _text = " ";
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -57,15 +58,46 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
-      if (_counter > 10) {
-        _counter = 1;
-      }
 
-      _text = "Ganjil: ";
-      for (int i = 0; i <= _counter; i++) {
-        if (i % 2 != 0) {
-          _text += '${i}, ';
+      _counter++;
+      // if (_counter > 10) {
+      //   _counter = 1;
+      // }
+
+      // _text = "Ganjil: ";
+      // for (int i = 0; i <= _counter; i++) {
+      //   if (i % 2 != 0) {
+      //     _text += '$i, ';
+      //   }
+      // }
+
+      // Menampilkan bilangan genap kelipatan 3
+      // _text = 'Genap: ';
+      // for (int i = 0; i <= _counter; i += 3) {
+      //   if (i % 2 == 0) {
+      //     if (i != 0) {
+      //       _text += '$i, ';
+      //     }
+      //   }
+      // }
+
+      // Menampilkan bilangan prima
+      _text = "Prima: ";
+      bool isPrima = true;
+
+      for (int i = 1; i <= _counter; i++) {
+        isPrima = true;
+        if (i == 1 || i == 2) {
+          _text += '$i, ';
+        } else {
+          for (int j = 2; j < i; j++) {
+            if (i % j == 0) {
+              isPrima = false;
+            }
+          }
+          if (isPrima) {
+            _text += '$i, ';
+          }
         }
       }
     });
@@ -106,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Tap to increment :',
             ),
             Text(
               '$_counter',
